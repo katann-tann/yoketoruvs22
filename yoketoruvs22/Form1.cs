@@ -17,5 +17,24 @@ namespace yoketoruvs22
             InitializeComponent();
         }
 
+        private void label1_Click(object sender, EventArgs e)//titleLabel
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)//startButton
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)//copyrightLabel
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)//timeLabel
+        {
+
+        }
     }
 }
