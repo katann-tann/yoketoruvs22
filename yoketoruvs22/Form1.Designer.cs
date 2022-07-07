@@ -35,6 +35,9 @@ namespace yoketoruvs22
             this.timeLabel = new System.Windows.Forms.Label();
             this.leftLabel = new System.Windows.Forms.Label();
             this.hiLabel = new System.Windows.Forms.Label();
+            this.GameOverLavel = new System.Windows.Forms.Label();
+            this.ClearLabel = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -54,7 +57,7 @@ namespace yoketoruvs22
             this.startButton.BackColor = System.Drawing.Color.Khaki;
             this.startButton.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.startButton.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.startButton.Location = new System.Drawing.Point(256, 268);
+            this.startButton.Location = new System.Drawing.Point(276, 266);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(198, 79);
             this.startButton.TabIndex = 1;
@@ -104,12 +107,49 @@ namespace yoketoruvs22
             this.hiLabel.TabIndex = 5;
             this.hiLabel.Text = "HighScore 100";
             // 
+            // GameOverLavel
+            // 
+            this.GameOverLavel.AutoSize = true;
+            this.GameOverLavel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GameOverLavel.ForeColor = System.Drawing.Color.YellowGreen;
+            this.GameOverLavel.Location = new System.Drawing.Point(258, 190);
+            this.GameOverLavel.Name = "GameOverLavel";
+            this.GameOverLavel.Size = new System.Drawing.Size(234, 46);
+            this.GameOverLavel.TabIndex = 6;
+            this.GameOverLavel.Text = "GameOver";
+            // 
+            // ClearLabel
+            // 
+            this.ClearLabel.AutoSize = true;
+            this.ClearLabel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ClearLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.ClearLabel.Location = new System.Drawing.Point(276, 190);
+            this.ClearLabel.Name = "ClearLabel";
+            this.ClearLabel.Size = new System.Drawing.Size(193, 46);
+            this.ClearLabel.TabIndex = 7;
+            this.ClearLabel.Text = "CLEAR!!";
+            // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.Khaki;
+            this.backButton.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.backButton.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.backButton.Location = new System.Drawing.Point(276, 266);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(198, 79);
+            this.backButton.TabIndex = 8;
+            this.backButton.Text = "タイトルに戻る";
+            this.backButton.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.ClearLabel);
+            this.Controls.Add(this.GameOverLavel);
             this.Controls.Add(this.hiLabel);
             this.Controls.Add(this.leftLabel);
             this.Controls.Add(this.timeLabel);
@@ -132,6 +172,9 @@ namespace yoketoruvs22
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label leftLabel;
         private System.Windows.Forms.Label hiLabel;
+        private System.Windows.Forms.Label GameOverLavel;
+        private System.Windows.Forms.Label ClearLabel;
+        private System.Windows.Forms.Button backButton;
     }
 }
 
