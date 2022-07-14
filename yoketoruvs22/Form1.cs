@@ -15,6 +15,21 @@ namespace yoketoruvs22
     {
         const bool isDebug = true;
 
+        const int PlayerMax = 1;
+        const int EnemyMax = 10;
+        const int ItemMax = 10;
+        const int ChrMax = PlayerMax + EnemyMax + ItemMax;
+        Label[] chrs = new Label[ChrMax];
+        const int PlayerIndex = 0;
+        const int EnemyIndex = PlayerIndex + PlayerMax; //連動して
+        const int ItemIndex = EnemyIndex + EnemyMax;
+
+        const string PlayerText = "(>ω<)"; //スキン類等
+        const string EnemyText = "■";
+        const string ItemText = "★";
+
+        static Random rand = new Random(); //乱数
+
         enum State
         {
             None = -1,     //無効

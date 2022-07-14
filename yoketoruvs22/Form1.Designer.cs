@@ -104,7 +104,7 @@ namespace yoketoruvs22
             // 
             this.hiLabel.AutoSize = true;
             this.hiLabel.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.hiLabel.Location = new System.Drawing.Point(256, 185);
+            this.hiLabel.Location = new System.Drawing.Point(260, 183);
             this.hiLabel.Name = "hiLabel";
             this.hiLabel.Size = new System.Drawing.Size(241, 48);
             this.hiLabel.TabIndex = 5;
@@ -115,7 +115,7 @@ namespace yoketoruvs22
             this.GameOverLavel.AutoSize = true;
             this.GameOverLavel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.GameOverLavel.ForeColor = System.Drawing.Color.YellowGreen;
-            this.GameOverLavel.Location = new System.Drawing.Point(258, 190);
+            this.GameOverLavel.Location = new System.Drawing.Point(276, 185);
             this.GameOverLavel.Name = "GameOverLavel";
             this.GameOverLavel.Size = new System.Drawing.Size(234, 46);
             this.GameOverLavel.TabIndex = 6;
@@ -126,7 +126,7 @@ namespace yoketoruvs22
             this.ClearLabel.AutoSize = true;
             this.ClearLabel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.ClearLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.ClearLabel.Location = new System.Drawing.Point(276, 190);
+            this.ClearLabel.Location = new System.Drawing.Point(296, 185);
             this.ClearLabel.Name = "ClearLabel";
             this.ClearLabel.Size = new System.Drawing.Size(193, 46);
             this.ClearLabel.TabIndex = 7;
