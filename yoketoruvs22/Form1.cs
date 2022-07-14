@@ -19,6 +19,7 @@ namespace yoketoruvs22
         const int EnemyMax = 10;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
+
         Label[] chrs = new Label[ChrMax];
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax; //連動して
@@ -67,6 +68,7 @@ namespace yoketoruvs22
                 {
                     chrs[i].Text = ItemText;
                 }
+                chrs[i].Font = tempLabel.Font;
                 Controls.Add(chrs[i]);
             }
         }
@@ -159,11 +161,10 @@ namespace yoketoruvs22
                     hiLabel.Visible = false;
                     break;
 
-                    for(int i=EnemyIndex; i < ChrMax; i++)
+                    for (int i = EnemyIndex; i < ChrMax; i=i+1)
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
-
                     }
                     break;
 

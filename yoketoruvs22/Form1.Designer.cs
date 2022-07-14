@@ -40,6 +40,7 @@ namespace yoketoruvs22
             this.ClearLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tempLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -150,12 +151,25 @@ namespace yoketoruvs22
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tempLabel
+            // 
+            this.tempLabel.AutoSize = true;
+            this.tempLabel.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tempLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tempLabel.Location = new System.Drawing.Point(79, 304);
+            this.tempLabel.Name = "tempLabel";
+            this.tempLabel.Size = new System.Drawing.Size(35, 30);
+            this.tempLabel.TabIndex = 9;
+            this.tempLabel.Text = "★";
+            this.tempLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tempLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.ClearLabel);
             this.Controls.Add(this.GameOverLavel);
@@ -186,6 +200,7 @@ namespace yoketoruvs22
         private System.Windows.Forms.Label ClearLabel;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label tempLabel;
     }
 }
 
