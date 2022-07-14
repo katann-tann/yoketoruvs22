@@ -28,6 +28,8 @@ namespace yoketoruvs22
         const string EnemyText = "■";
         const string ItemText = "★";
 
+       
+
         static Random rand = new Random(); //乱数
 
         enum State
@@ -101,7 +103,7 @@ namespace yoketoruvs22
                 initProc();
             }
 
-            if(isDebug) //[!]で
+            if(isDebug) //[!]でnotにできる
             {
                 if (GetAsyncKeyState((int)Keys.V) < 0)
                 {
@@ -112,7 +114,24 @@ namespace yoketoruvs22
                     nextState = State.Clear;
                 }
             }
+
+            if(currentState==State.Game)
+            {
+                UpdateGame();
+            }
         }
+      
+        void UpdateGame()
+        {
+            Point mp = PointToClient(MousePosition);
+           /* Point spos = MousePosition;
+            Point fpos = PointToClient(spos);
+            PlayerText. = fpos.X - PlayerText.Width / 2; //-ラベルの幅の半分
+            PlayerText. = fpos.Y - PlayerText.Height / 2;
+           */
+        }
+        
+        
         void initProc()
         {
             currentState = nextState;
@@ -140,16 +159,26 @@ namespace yoketoruvs22
                     hiLabel.Visible = false;
                     break;
 
+                    for(int i=EnemyIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+
+                    }
+                    break;
+
                 case State.Gameover:
                     GameOverLavel.Visible = true;
                     backButton.Visible = true;
                     hiLabel.Visible = true;
+                    ClearLabel.Visible = false;
                     break;
 
                 case State.Clear:
                     ClearLabel.Visible = true;
                     backButton.Visible = true;
                     hiLabel.Visible = true;
+                    GameOverLavel.Visible = false;
                     break;
             }
         }
