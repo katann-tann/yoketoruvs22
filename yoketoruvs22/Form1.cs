@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace yoketoruvs22
 {
     public partial class Form1 : Form
     {
+        const bool isDebug = true;
+
         enum State
         {
             None = -1,     //無効
@@ -22,6 +25,10 @@ namespace yoketoruvs22
         }
         State currentState = State.None;
         State nextState = State.Title;
+
+        [DllImport("user32.dll")]
+
+        public static extern short GetAsyncKeyState(int vKey); //
 
         public Form1()
         {
@@ -40,7 +47,7 @@ namespace yoketoruvs22
 
         private void label2_Click(object sender, EventArgs e)//copyrightLabel
         {
-
+            
         }
 
         private void label3_Click(object sender, EventArgs e)//timeLabel
@@ -59,6 +66,18 @@ namespace yoketoruvs22
             {
                 initProc();
             }
+
+            if(isDebug) //[!]で
+            {
+                if (GetAsyncKeyState((int)Keys.V) < 0)
+                {
+                    nextState = State.Gameover;
+                }
+                else if(GetAsyncKeyState((int)Keys.C) < 0)
+                {
+                    nextState = State.Clear;
+                }
+            }
         }
         void initProc()
         {
@@ -67,7 +86,8 @@ namespace yoketoruvs22
 
             switch(currentState)
             {
-                //初期化文は一括
+                //初期化文は一括で管理しよう
+                //ユニティのシーン処理のC言語版
                 case State.Title:
                     titleLabel.Visible = true;
                     timeLabel.Visible = true;
@@ -85,7 +105,24 @@ namespace yoketoruvs22
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
                     break;
+
+                case State.Gameover:
+                    GameOverLavel.Visible = true;
+                    backButton.Visible = true;
+                    hiLabel.Visible = true;
+                    break;
+
+                case State.Clear:
+                    ClearLabel.Visible = true;
+                    backButton.Visible = true;
+                    hiLabel.Visible = true;
+                    break;
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
         }
     }
 

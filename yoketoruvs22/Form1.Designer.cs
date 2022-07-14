@@ -45,11 +45,12 @@ namespace yoketoruvs22
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 50F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.titleLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 50F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.titleLabel.ForeColor = System.Drawing.SystemColors.Highlight;
             this.titleLabel.Location = new System.Drawing.Point(188, 86);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(395, 67);
+            this.titleLabel.Size = new System.Drawing.Size(403, 67);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "よけとる2022";
             this.titleLabel.Click += new System.EventHandler(this.label1_Click);
@@ -112,7 +113,7 @@ namespace yoketoruvs22
             // GameOverLavel
             // 
             this.GameOverLavel.AutoSize = true;
-            this.GameOverLavel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GameOverLavel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.GameOverLavel.ForeColor = System.Drawing.Color.YellowGreen;
             this.GameOverLavel.Location = new System.Drawing.Point(258, 190);
             this.GameOverLavel.Name = "GameOverLavel";
@@ -123,7 +124,7 @@ namespace yoketoruvs22
             // ClearLabel
             // 
             this.ClearLabel.AutoSize = true;
-            this.ClearLabel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ClearLabel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.ClearLabel.ForeColor = System.Drawing.Color.Crimson;
             this.ClearLabel.Location = new System.Drawing.Point(276, 190);
             this.ClearLabel.Name = "ClearLabel";
@@ -134,7 +135,7 @@ namespace yoketoruvs22
             // backButton
             // 
             this.backButton.BackColor = System.Drawing.Color.Khaki;
-            this.backButton.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.backButton.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.backButton.ForeColor = System.Drawing.SystemColors.Desktop;
             this.backButton.Location = new System.Drawing.Point(276, 266);
             this.backButton.Name = "backButton";
@@ -142,6 +143,7 @@ namespace yoketoruvs22
             this.backButton.TabIndex = 8;
             this.backButton.Text = "タイトルに戻る";
             this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // timer1
             // 
