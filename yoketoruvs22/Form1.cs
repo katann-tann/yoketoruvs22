@@ -15,12 +15,14 @@ namespace yoketoruvs22
     {
         const bool isDebug = true;
 
+        const int SpeedMax = 10;
         const int PlayerMax = 1;
         const int EnemyMax = 10;
         const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
-
         Label[] chrs = new Label[ChrMax];
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax; //連動して
         const int ItemIndex = EnemyIndex + EnemyMax;
@@ -125,12 +127,37 @@ namespace yoketoruvs22
       
         void UpdateGame()
         {
-            Point mp = PointToClient(MousePosition);
+            //Point mp = PointToClient(MousePosition);
            /* Point spos = MousePosition;
             Point fpos = PointToClient(spos);
             PlayerText. = fpos.X - PlayerText.Width / 2; //-ラベルの幅の半分
             PlayerText. = fpos.Y - PlayerText.Height / 2;
            */
+           for(int i=EnemyIndex;i<ChrMax;i++)
+            {
+                chrs[i].Left += vx[i];
+                chrs[i].Top += vy[i];
+                if(chrs[i].Left<0)
+                {
+                    vx[i] = Math.Abs(vx[i]); //値をひっくり返す
+                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ
+                }
+                if (chrs[i].Right <ClientSize.Width )
+                {
+                    vx[i] = -Math.Abs(vx[i]); //値をひっくり返す
+                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]); //値をひっくり返す
+                    vy[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
+                }
+                if (chrs[i].Bottom < ClientSize.Height)
+                {
+                    vx[i] = -Math.Abs(vy[i]); //値をひっくり返す
+                    vx[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
+                }
+            }
         }
         
         
@@ -159,14 +186,18 @@ namespace yoketoruvs22
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
-                    break;
+                    
 
-                    for (int i = EnemyIndex; i < ChrMax; i=i+1)
+                    for (int i = EnemyIndex; i < ChrMax; i++)
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                        vx[i] = rand.Next(-SpeedMax, SpeedMax + 10);
+                        vy[i] = rand.Next(-SpeedMax, SpeedMax + 10);
+
                     }
                     break;
+
 
                 case State.Gameover:
                     GameOverLavel.Visible = true;
@@ -174,6 +205,7 @@ namespace yoketoruvs22
                     hiLabel.Visible = true;
                     ClearLabel.Visible = false;
                     break;
+
 
                 case State.Clear:
                     ClearLabel.Visible = true;
