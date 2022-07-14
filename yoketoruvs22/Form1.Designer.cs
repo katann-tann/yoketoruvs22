@@ -29,6 +29,7 @@ namespace yoketoruvs22
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
             this.copyrightLabel = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@ namespace yoketoruvs22
             this.GameOverLavel = new System.Windows.Forms.Label();
             this.ClearLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // titleLabel
@@ -69,7 +71,7 @@ namespace yoketoruvs22
             // 
             this.copyrightLabel.AutoSize = true;
             this.copyrightLabel.Font = new System.Drawing.Font("Yu Gothic UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.copyrightLabel.Location = new System.Drawing.Point(306, 395);
+            this.copyrightLabel.Location = new System.Drawing.Point(296, 395);
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(492, 46);
             this.copyrightLabel.TabIndex = 2;
@@ -141,6 +143,11 @@ namespace yoketoruvs22
             this.backButton.Text = "タイトルに戻る";
             this.backButton.UseVisualStyleBackColor = false;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -159,6 +166,7 @@ namespace yoketoruvs22
             this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +183,7 @@ namespace yoketoruvs22
         private System.Windows.Forms.Label GameOverLavel;
         private System.Windows.Forms.Label ClearLabel;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
