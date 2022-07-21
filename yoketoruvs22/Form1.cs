@@ -96,7 +96,7 @@ namespace yoketoruvs22
 
         private void button1_Click(object sender, EventArgs e)//startButton
         {
-            currentState = nextState;
+            currentState = nextState; //実行なうのStateをnextに
             nextState = State.Game;
         }
 
@@ -222,9 +222,6 @@ namespace yoketoruvs22
             }
         } 
 
-
-
-
 //--------------------------------------------------------------------------------
 
         void initProc()
@@ -262,6 +259,8 @@ namespace yoketoruvs22
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 10);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 10);
+                        chrs[i].Visible = true;
+                        leftLabel.Text = $"★:{itemCount:00}";
 
                     }
                     break;
@@ -280,6 +279,7 @@ namespace yoketoruvs22
                     backButton.Visible = true;
                     hiLabel.Visible = true;
                     GameOverLavel.Visible = false;
+                    //ハイスコアはtimeをhiscreへ代入しそれをラベルへ
                     if(time>hiscore)
                     {
                         hiscore = time;

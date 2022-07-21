@@ -116,7 +116,7 @@ namespace yoketoruvs22
             this.GameOverLavel.AutoSize = true;
             this.GameOverLavel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.GameOverLavel.ForeColor = System.Drawing.Color.YellowGreen;
-            this.GameOverLavel.Location = new System.Drawing.Point(276, 185);
+            this.GameOverLavel.Location = new System.Drawing.Point(260, 107);
             this.GameOverLavel.Name = "GameOverLavel";
             this.GameOverLavel.Size = new System.Drawing.Size(234, 46);
             this.GameOverLavel.TabIndex = 6;
