@@ -162,6 +162,7 @@ namespace yoketoruvs22
             this.tempLabel.TabIndex = 9;
             this.tempLabel.Text = "★";
             this.tempLabel.Visible = false;
+            this.tempLabel.Click += new System.EventHandler(this.tempLabel_Click);
             // 
             // Form1
             // 

@@ -8,6 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+/*
+ 作成時メモ　ここは疑問に答える文やその他色々書く場所です
+
+ */
+
+
+//--------------------------------------------------------------------------------
 
 namespace yoketoruvs22
 {
@@ -26,20 +33,23 @@ namespace yoketoruvs22
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax; //連動して
         const int ItemIndex = EnemyIndex + EnemyMax;
+        const int StartTime = 100; //100で10秒　コンマ式で時間が進む
 
-        const string PlayerText = "(>ω<)"; //スキン類等
+        const string PlayerText = "(>ω<)"; //スキン類等に役に立つ
         const string EnemyText = "■";
         const string ItemText = "★";
 
         int itemCount = 0;
+        int time = StartTime + 1;
        
+//--------------------------------------------------------------------------------
 
         static Random rand = new Random(); //乱数
 
         enum State
         {
             None = -1,     //無効
-            Title, //一番上の設定数値から計算される(0になるよ)
+            Title, //一番上の設定数値から計算される(0からだよ)
             Game,
             Gameover,
             Clear
@@ -50,6 +60,8 @@ namespace yoketoruvs22
         [DllImport("user32.dll")]
 
         public static extern short GetAsyncKeyState(int vKey); //
+
+//--------------------------------------------------------------------------------
 
         public Form1()
         {
@@ -127,36 +139,43 @@ namespace yoketoruvs22
             }
         }
 
+//--------------------------------------------------------------------------------
+
         void UpdateGame()
         {
-           Point mp = PointToClient(MousePosition);
+            timeLabel.Text = $"Time{time:000}";
+            time--;
+
+            Point mp = PointToClient(MousePosition);
            
             chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2; //-ラベルの幅の半分
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
            
            for(int i=EnemyIndex;i<ChrMax;i++)
             {
+                if (!chrs[i].Visible/*==false*/) continue; //動かさなくする
+
                 chrs[i].Left += vx[i];
                 chrs[i].Top += vy[i];
                 if(chrs[i].Left<0)
                 {
                     vx[i] = Math.Abs(vx[i]); //値をひっくり返す
-                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ 問題なし
+                    
                 }
                 if (chrs[i].Right >ClientSize.Width )
                 {
                     vx[i] = -Math.Abs(vx[i]); //値をひっくり返す
-                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ
+                    
                 }
                 if (chrs[i].Top < 0)
                 {
                     vy[i] = Math.Abs(vy[i]); //値をひっくり返す
-                    vy[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
+                 
                 }
                 if (chrs[i].Bottom > ClientSize.Height)
                 {
                     vy[i] = -Math.Abs(vy[i]); //値をひっくり返す
-                    vy[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
+                   
                 }
                 //当たり判定
                 if((mp.X>=chrs[i].Left)
@@ -165,28 +184,40 @@ namespace yoketoruvs22
                  &&(mp.Y < chrs[i].Bottom))
                 {
                     //MessageBox.Show("当たった");
-                    //敵?
+
+                    //敵かどうかの判断
                     if(i<ItemIndex)
                     {
                         nextState = State.Gameover;
                     }
-                    //アイテム
+                    //アイテムである
                     else
                     {
-                        chrs[i].Visible = false;
+                        chrs[i].Visible = false; //見えてないだけなのだ
                         itemCount--;
-                        if(itemCount<=0)
+                        leftLabel.Text = $"★:{itemCount:00}";
+                        if (itemCount<=0)
                         {
                             nextState = State.Clear;
                         }
+
+                        /*vx[i] = 0;
+                        vy[i] = 0;
+                        chrs[i].Left = 10000; //飛ばす（ただし判定は残る）
+                        */
                     }
-                    leftLabel.Text = $"★:{itemCount:00}";
+                   // if()
+                    {
+
+                    }
+                    
                 }
                  
             }
         }
-        
-        
+
+//--------------------------------------------------------------------------------
+
         void initProc()
         {
             currentState = nextState;
@@ -209,6 +240,7 @@ namespace yoketoruvs22
 
                 case State.Game:
                     itemCount = ItemMax;
+                    time = StartTime; //
                     titleLabel.Visible = false;
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
@@ -243,9 +275,16 @@ namespace yoketoruvs22
             }
         }
 
+//--------------------------------------------------------------------------------
+
         private void backButton_Click(object sender, EventArgs e)
         {
             nextState = State.Title;
+        }
+
+        private void tempLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
