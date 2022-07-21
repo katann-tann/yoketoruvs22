@@ -107,9 +107,9 @@ namespace yoketoruvs22
             this.hiLabel.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hiLabel.Location = new System.Drawing.Point(260, 183);
             this.hiLabel.Name = "hiLabel";
-            this.hiLabel.Size = new System.Drawing.Size(241, 48);
+            this.hiLabel.Size = new System.Drawing.Size(201, 48);
             this.hiLabel.TabIndex = 5;
-            this.hiLabel.Text = "HighScore 100";
+            this.hiLabel.Text = "HighScore 0";
             // 
             // GameOverLavel
             // 
@@ -127,7 +127,7 @@ namespace yoketoruvs22
             this.ClearLabel.AutoSize = true;
             this.ClearLabel.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.ClearLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.ClearLabel.Location = new System.Drawing.Point(296, 185);
+            this.ClearLabel.Location = new System.Drawing.Point(276, 109);
             this.ClearLabel.Name = "ClearLabel";
             this.ClearLabel.Size = new System.Drawing.Size(193, 46);
             this.ClearLabel.TabIndex = 7;

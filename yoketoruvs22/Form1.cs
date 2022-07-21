@@ -41,6 +41,7 @@ namespace yoketoruvs22
 
         int itemCount = 0;
         int time = StartTime + 1;
+        int hiscore = 0;
        
 //--------------------------------------------------------------------------------
 
@@ -213,6 +214,7 @@ namespace yoketoruvs22
                 }
                  
             }
+           //タイムオーバー
             if((time <= 0)
          && (nextState == State.None))
             {
@@ -278,6 +280,11 @@ namespace yoketoruvs22
                     backButton.Visible = true;
                     hiLabel.Visible = true;
                     GameOverLavel.Visible = false;
+                    if(time>hiscore)
+                    {
+                        hiscore = time;
+                        hiLabel.Text="HighScore"+hiscore;
+                    }
                     break;
             }
         }
