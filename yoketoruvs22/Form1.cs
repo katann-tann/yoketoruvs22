@@ -54,7 +54,7 @@ namespace yoketoruvs22
         {
             InitializeComponent();
 
-            for(int i=0;i<ChrMax;i++)//キャラ画像の初期化？
+            for(int i=0;i<ChrMax;i++)//キャラ画像の初期化？ [i]のように仮置きする感じ　抽象的なかんじ　ok?
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -64,7 +64,7 @@ namespace yoketoruvs22
                 }
                 else if(i<ItemIndex)//
                 {
-                    chrs[i].Text = EnemyText;
+                    chrs[i].Text = EnemyText; //敵は消えない(今回)のでPLのとなり
                 }
                 else
                 {
@@ -82,6 +82,7 @@ namespace yoketoruvs22
 
         private void button1_Click(object sender, EventArgs e)//startButton
         {
+            currentState = nextState;
             nextState = State.Game;
         }
 
@@ -124,15 +125,14 @@ namespace yoketoruvs22
                 UpdateGame();
             }
         }
-      
+
         void UpdateGame()
         {
-            //Point mp = PointToClient(MousePosition);
-           /* Point spos = MousePosition;
-            Point fpos = PointToClient(spos);
-            PlayerText. = fpos.X - PlayerText.Width / 2; //-ラベルの幅の半分
-            PlayerText. = fpos.Y - PlayerText.Height / 2;
-           */
+           Point mp = PointToClient(MousePosition);
+           
+            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2; //-ラベルの幅の半分
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
+           
            for(int i=EnemyIndex;i<ChrMax;i++)
             {
                 chrs[i].Left += vx[i];
@@ -140,9 +140,9 @@ namespace yoketoruvs22
                 if(chrs[i].Left<0)
                 {
                     vx[i] = Math.Abs(vx[i]); //値をひっくり返す
-                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ
+                    vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ 問題なし
                 }
-                if (chrs[i].Right <ClientSize.Width )
+                if (chrs[i].Right >ClientSize.Width )
                 {
                     vx[i] = -Math.Abs(vx[i]); //値をひっくり返す
                     vx[i] = (int)(vx[i] * 1.1); // *110 / 100 の方がスッキリ
@@ -152,11 +152,20 @@ namespace yoketoruvs22
                     vy[i] = Math.Abs(vy[i]); //値をひっくり返す
                     vy[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
                 }
-                if (chrs[i].Bottom < ClientSize.Height)
+                if (chrs[i].Bottom > ClientSize.Height)
                 {
-                    vx[i] = -Math.Abs(vy[i]); //値をひっくり返す
-                    vx[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
+                    vy[i] = -Math.Abs(vy[i]); //値をひっくり返す
+                    vy[i] = (int)(vy[i] * 1.1); // *110 / 100 の方がスッキリ
                 }
+                //当たり判定
+                if((mp.X>=chrs[i].Left)
+                 &&(mp.X<chrs[i].Right )
+                 &&( mp.Y>=chrs[i].Top )
+                 && (mp.Y < chrs[i].Bottom))
+                {
+                    MessageBox.Show("当たった");
+                }
+                 
             }
         }
         
