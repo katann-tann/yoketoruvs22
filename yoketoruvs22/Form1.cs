@@ -142,9 +142,8 @@ namespace yoketoruvs22
 //--------------------------------------------------------------------------------
 
         void UpdateGame()
-        {
+        {          time--;
             timeLabel.Text = $"Time{time:000}";
-            time--;
 
             Point mp = PointToClient(MousePosition);
            
@@ -214,7 +213,15 @@ namespace yoketoruvs22
                 }
                  
             }
-        }
+            if((time <= 0)
+         && (nextState == State.None))
+            {
+                nextState = State.Gameover;
+            }
+        } 
+
+
+
 
 //--------------------------------------------------------------------------------
 
