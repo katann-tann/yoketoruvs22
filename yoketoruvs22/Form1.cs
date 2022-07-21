@@ -31,6 +31,7 @@ namespace yoketoruvs22
         const string EnemyText = "■";
         const string ItemText = "★";
 
+        int itemCount = 0;
        
 
         static Random rand = new Random(); //乱数
@@ -160,10 +161,26 @@ namespace yoketoruvs22
                 //当たり判定
                 if((mp.X>=chrs[i].Left)
                  &&(mp.X<chrs[i].Right )
-                 &&( mp.Y>=chrs[i].Top )
-                 && (mp.Y < chrs[i].Bottom))
+                 &&(mp.Y>=chrs[i].Top )
+                 &&(mp.Y < chrs[i].Bottom))
                 {
-                    MessageBox.Show("当たった");
+                    //MessageBox.Show("当たった");
+                    //敵?
+                    if(i<ItemIndex)
+                    {
+                        nextState = State.Gameover;
+                    }
+                    //アイテム
+                    else
+                    {
+                        chrs[i].Visible = false;
+                        itemCount--;
+                        if(itemCount<=0)
+                        {
+                            nextState = State.Clear;
+                        }
+                    }
+                    leftLabel.Text = $"★:{itemCount:00}";
                 }
                  
             }
@@ -191,6 +208,7 @@ namespace yoketoruvs22
                     break;
 
                 case State.Game:
+                    itemCount = ItemMax;
                     titleLabel.Visible = false;
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
